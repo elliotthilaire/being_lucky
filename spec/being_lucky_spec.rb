@@ -23,14 +23,14 @@ describe 'BeingLucky' do
       end
     end
 
-    context 'when one dice' do
+    context 'when single dice' do
       it 'returns correct score' do
         dice = [1]
         expect(BeingLucky.new(dice).score).to equal(100)
       end
     end
 
-    context 'when three scoring, and one unscoring' do
+    context 'when three scoring, and one unscoring dice' do
       it 'returns correct score' do
         dice = [2, 2, 2, 2]
         expect(BeingLucky.new(dice).score).to equal(200)
@@ -38,7 +38,7 @@ describe 'BeingLucky' do
     end
   end
 
-  context 'when invalid input' do
+  describe 'initialize' do
     context 'when no dice' do
       it 'raises an error' do
         dice = []
