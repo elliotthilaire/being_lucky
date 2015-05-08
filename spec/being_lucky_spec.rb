@@ -42,21 +42,21 @@ describe 'BeingLucky' do
     context 'when no dice' do
       it 'raises an error' do
         dice = []
-        expect { BeingLucky.new(dice) }.to raise_error('NoDiceError')
+        expect { BeingLucky.new(dice) }.to raise_error(ArgumentError)
       end
     end
 
     context 'when too many dice' do
       it 'raises an error' do
         dice = [1, 1, 1, 1, 1, 1]
-        expect { BeingLucky.new(dice) }.to raise_error('TooManyDiceError')
+        expect { BeingLucky.new(dice) }.to raise_error(ArgumentError)
       end
     end
 
     context 'when contains invalid dice' do
       it 'raises an error' do
         dice = [1, 1, 'string']
-        expect { BeingLucky.new(dice) }.to raise_error('InvalidDiceError')
+        expect { BeingLucky.new(dice) }.to raise_error(ArgumentError)
       end
     end
   end
