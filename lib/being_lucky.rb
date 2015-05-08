@@ -3,9 +3,9 @@
 # e.g. [2, 1, 5]; for three dice, rolled on a two, a one, and a five.
 class BeingLucky
   def initialize(dice)
-    raise ArgumentError.new 'must have maximum 5 dice' if dice.count > 5
-    raise ArgumentError.new 'must have minimum 1 dice' if dice.count == 0
-    raise ArgumentError.new 'dice must be numbers' unless dice.all? { |i| i.is_a? Fixnum }
+    raise ArgumentError.new, 'must have maximum 5 dice' if dice.count > 5
+    raise ArgumentError.new, 'must have minimum 1 dice' if dice.count == 0
+    raise ArgumentError.new, 'must be numbers' unless dice.all? { |i| i.is_a? Fixnum }
     @dice = dice
   end
 
