@@ -53,7 +53,7 @@ describe 'BeingLucky' do
       end
     end
 
-    context 'when not a dice' do
+    context 'when contains invalid dice' do
       it 'raises an error' do
         dice = [1, 1, 'string']
         expect { BeingLucky.new(dice) }.to raise_error('InvalidDiceError')
