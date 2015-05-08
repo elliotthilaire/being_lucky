@@ -15,7 +15,7 @@ class BeingLucky
 
   private
 
-  # Calculate sum of each unique unique number rolled.
+  # Calculate sum of score for each unique number rolled.
   def calculate_score
     scores = @dice.uniq.map { |face| lookup_score(face,  @dice.count(face)) }
     scores.reduce(:+)
