@@ -9,39 +9,36 @@ class BeingLucky
     @dice = dice
   end
 
+  # Calculate score for each face that is rolled.
+  # then return the sum.
   def score
-    calculate_score
+    scores = @dice.uniq.map { |face| calculate_score(face,  @dice.count(face)) }
+    scores.reduce(:+)
   end
 
   private
 
-  # Calculate sum of score for each unique number rolled.
-  def calculate_score
-    scores = @dice.uniq.map { |face| lookup_score(face,  @dice.count(face)) }
-    scores.reduce(:+)
-  end
-
   # Tell it a face and the number of times the face appears
-  # and it will look up the score.
-  def lookup_score(face, count)
-    score = 0
+  # and it will calculate the total score for that face
+  def calculate_score(face, count)
+    face_score = 0
 
     # score triples
     number_of_triples = count / 3
-    score += triple_score(face) * number_of_triples
+    face_score += triple_score(face) * number_of_triples
 
     # score singles
     number_of_singles = count % 3
-    score + single_score(face) * number_of_singles
+    face_score + single_score(face) * number_of_singles
   end
 
-  # Lookup points for a triple
+  # Lookup points for a triple face
   def triple_score(face)
     points = { 1 => 1000, 2 => 200, 3 => 300, 4 => 400, 5 => 500, 6 => 600 }
     points[face] || 0
   end
 
-  # Lookup the points for remaining
+  # Lookup points for a single face
   def single_score(face)
     points = { 1 => 100, 5 => 50 }
     points[face] || 0
